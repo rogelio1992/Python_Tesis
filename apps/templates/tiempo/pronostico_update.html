@@ -1,0 +1,342 @@
+{% extends "layouts/base.html" %}
+{% load bootstrap5 %}
+{% block title %} Actualizar Pronóstico {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<form action="{% url 'pronostico_update' object.id %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+
+<div class="py-4">
+
+
+</div>
+<div class=row>
+    <div class="col-8">
+        <h3>Pronóstico del dia {{object.fecha}}<h3>
+    </div>
+    <div class="col-4 text-end">
+        <div class="mb-3">
+            <button type="submit" class="btn btn-sm btn-success btn-flotante  animate-up-2" style="margin-right: 35px;"><i class="fa fa-check" aria-hidden="true"></i></button>
+            <a href="{% url 'pronostico_list' %}" type="button" class="btn btn-sm btn-secondary btn-flotante  animate-up-2"><i class="fa fa-times" aria-hidden="true"></i></a>
+        </div>
+    </div>
+    
+           
+ 
+</div>
+    <div class="card border-0 shadow mb-4">
+        <div class="card-header">
+            <h5 class="card-title">Pronóstico</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-4">
+                    <label class="form-label" for="id_fecha">{{form.fecha.label}}</label>
+                    <input type="text" name="fecha" value="{{form.fecha.value}}" class="datepicker_input form-control"
+                        placeholder="Fecha" title="" required="" id="id_fecha">
+
+                      
+                    
+                </div>
+                <div class="col-4">
+                    {% bootstrap_field form.provincia %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card border-0 shadow mb-4">
+        <div class="card-header">
+            <h5 class="card-title">Costa Norte</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-4 ">
+                    <h4>Temperatura</h4>
+                    <div class="row">
+                        <div class="col">{% bootstrap_field form.n_temp_min %}</div>
+                        <div class="col">{% bootstrap_field form.n_temp_max %}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">{% bootstrap_field form.n_temp_tarde_min %}</div>
+                        <div class="col">{% bootstrap_field form.n_temp_tarde_max %}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">{% bootstrap_field form.n_temp_noche_min %}</div>
+                        <div class="col">{% bootstrap_field form.n_temp_noche_max %}</div>
+                    </div>
+
+                </div>
+
+                <div class="col-2">
+                    <h4>Tiempo</h4>
+                    <div class="row">{% bootstrap_field form.n_tiempo_manana %}</div>
+                    <div class="row">{% bootstrap_field form.n_tiempo_tarde %}</div>
+                    <div class="row">{% bootstrap_field form.n_tiempo_noche %}</div>
+                </div>
+                <div class="col-3 ">
+                    <h4>Dirección del viento</h4>
+                    <div class="row">{% bootstrap_field form.n_viento_dir_manana %}</div>
+                    <div class="row">{% bootstrap_field form.n_viento_dir_tarde %}</div>
+                    <div class="row">{% bootstrap_field form.n_viento_dir_noche %}</div>
+                </div>
+                <div class="col-3 ">
+                    <h4>Velocidad del viento</h4>
+                    <div class="row">{% bootstrap_field form.n_viento_vel_manana %}</div>
+                    <div class="row">{% bootstrap_field form.n_viento_vel_tarde %}</div>
+                    <div class="row">{% bootstrap_field form.n_viento_vel_noche %}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card border-0 shadow mb-4">
+        <div class="card-header">
+            <h5 class="card-title">Interior
+            </h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-4 ">
+                    <h4>Temperatura</h4>
+                    <div class="row">
+                        <div class="col">{% bootstrap_field form.i_temp_min %}</div>
+                        <div class="col">{% bootstrap_field form.i_temp_max %}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">{% bootstrap_field form.i_temp_tarde_min %}</div>
+                        <div class="col">{% bootstrap_field form.i_temp_tarde_max %}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">{% bootstrap_field form.i_temp_noche_min %}</div>
+                        <div class="col">{% bootstrap_field form.i_temp_noche_max %}</div>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <h4>Tiempo</h4>
+                    <div class="row">{% bootstrap_field form.i_tiempo_manana %}</div>
+                    <div class="row">{% bootstrap_field form.i_tiempo_tarde %}</div>
+                    <div class="row">{% bootstrap_field form.i_tiempo_noche %}</div>
+                </div>
+                <div class="col-3 ">
+                    <h4>Dirección del viento</h4>
+                    <div class="row">{% bootstrap_field form.i_viento_dir_manana %}</div>
+                    <div class="row">{% bootstrap_field form.i_viento_dir_tarde %}</div>
+                    <div class="row">{% bootstrap_field form.i_viento_dir_noche %}</div>
+                </div>
+                <div class="col-3 ">
+                    <h4>Velocidad del viento</h4>
+                    <div class="row">{% bootstrap_field form.i_viento_vel_manana %}</div>
+                    <div class="row">{% bootstrap_field form.i_viento_vel_tarde %}</div>
+                    <div class="row">{% bootstrap_field form.i_viento_vel_noche %}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card border-0 shadow mb-4">
+        <div class="card-header">
+            <h5 class="card-title">Costa Sur</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-4">
+                    <h4>Temperatura</h4>
+                    <div class="row">
+                        <div class="col">{% bootstrap_field form.s_temp_min %}</div>
+                        <div class="col">{% bootstrap_field form.s_temp_max %}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">{% bootstrap_field form.s_temp_tarde_min %}</div>
+                        <div class="col">{% bootstrap_field form.s_temp_tarde_max %}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">{% bootstrap_field form.s_temp_noche_min %}</div>
+                        <div class="col">{% bootstrap_field form.s_temp_noche_max %}</div>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <h4>Tiempo</h4>
+                    <div class="row">{% bootstrap_field form.s_tiempo_manana %}</div>
+                    <div class="row">{% bootstrap_field form.s_tiempo_tarde %}</div>
+                    <div class="row">{% bootstrap_field form.s_tiempo_noche %}</div>
+                </div>
+                <div class="col-3 ">
+                    <h4>Dirección del viento</h4>
+                    <div class="row">{% bootstrap_field form.s_viento_dir_manana %}</div>
+                    <div class="row">{% bootstrap_field form.s_viento_dir_tarde %}</div>
+                    <div class="row">{% bootstrap_field form.s_viento_dir_noche %}</div>
+                </div>
+                <div class="col-3 ">
+                    <h4>Velocidad del viento</h4>
+                    <div class="row">{% bootstrap_field form.s_viento_vel_manana %}</div>
+                    <div class="row">{% bootstrap_field form.s_viento_vel_tarde %}</div>
+                    <div class="row">{% bootstrap_field form.s_viento_vel_noche %}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card border-0 shadow mb-4">
+        <div class="card-header">
+            <h5 class="card-title">Extendido</h5>
+        </div>
+        <div class="card-body">
+
+            <div class="row">
+                <div class="col-1">
+                    <h6 class="mt-5 blockquote">Día 1</h6>
+                </div>
+                <div class="col">
+                    <label class="form-label" for="id_d1_fecha">{{form.d1_fecha.label}}</label>
+                    <input type="text" name="d1_fecha" value="{{form.d1_fecha.value}}" class="form-control datepicker_input" placeholder="Fecha" title="" required="" id="id_d1_fecha">
+                </div>
+                <div class="col">{% bootstrap_field form.d1_min %}</div>
+                <div class="col">{% bootstrap_field form.d1_max %}</div>
+                <div class="col">{% bootstrap_field form.d1_tiempo %}</div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-1">
+                    <h6 class="mt-5 blockquote">Día 2</h6>
+                </div>
+                <div class="col">
+                    <label class="form-label" for="id_d2_fecha">{{form.d2_fecha.label}}</label>
+                    <input type="text" name="d2_fecha" value="{{form.d2_fecha.value}}" class="form-control datepicker_input" placeholder="Fecha" title="" required="" id="id_d2_fecha">
+                </div>
+                <div class="col">{% bootstrap_field form.d2_min %}</div>
+                <div class="col">{% bootstrap_field form.d2_max %}</div>
+                <div class="col">{% bootstrap_field form.d2_tiempo %}</div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-1 ">
+                    <h6 class="mt-5 blockquote">Día 3</h6>
+                </div>
+                <div class="col">
+                    <label class="form-label" for="id_d3_fecha">{{form.d3_fecha.label}}</label>
+                    <input type="text" name="d3_fecha" value="{{form.d3_fecha.value}}" class="form-control datepicker_input" placeholder="Fecha" title="" required="" id="id_d3_fecha">
+                </div>
+                <div class="col">{% bootstrap_field form.d3_min %}</div>
+                <div class="col">{% bootstrap_field form.d3_max %}</div>
+                <div class="col">{% bootstrap_field form.d3_tiempo %}</div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="card border-0 shadow mb-4">
+        <div class="card-header">
+            <h5 class="card-title">Fase Lunar</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col">{% bootstrap_field form.fl_actual %}</div>
+                <div class="col">{% bootstrap_field form.fl_prox %}</div>
+                <div class="col">
+                    <label class="form-label" for="id_fl_fecha">{{form.fl_fecha.label}}</label>
+                    <input type="text" name="fl_fecha" value="{{form.fl_fecha.value}}" class="form-control datepicker_input" placeholder="Fecha" title="" required="" id="id_fl_fecha">
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="card border-0 shadow mb-4">
+        <div class="card-header">
+            <h5 class="card-title">Salida del Sol</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col"><div class="mb-3"><label class="form-label" for="id_ss_actual">Actual</label><input type="time" name="ss_actual" value="{{form.ss_actual.value}}" maxlength="250" class="form-control" placeholder="Actual" title="" required="" id="id_ss_actual"></div></div>
+                <div class="col"><div class="mb-3"><label class="form-label" for="id_ss_prox">Próxima</label><input type="time" name="ss_prox" value="{{form.ss_prox.value}}" maxlength="50" class="form-control" placeholder="Próxima" title="" id="id_ss_prox"></div></div>
+                <div class="col">
+                    <label class="form-label" for="id_ss_fecha">{{form.ss_fecha.label}}</label>
+                    <input type="text" name="ss_fecha" value="{{form.ss_fecha.value}}" class="form-control datepicker_input" placeholder="Fecha" title="" id="id_ss_fecha">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="card border-0 shadow mb-4">
+        <div class="card-header">
+            <h5 class="card-title">Puesta del Sol</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col"><div class="mb-3"><label class="form-label" for="id_ps_actual">Actual</label><input type="time" name="ps_actual" value="{{form.ps_actual.value}}" maxlength="250" class="form-control" placeholder="Actual" title="" required="" id="id_ps_actual"></div></div>
+                <div class="col"><div class="mb-3"><label class="form-label" for="id_ps_prox">Próxima</label><input type="time" name="ps_prox" value="{{form.ps_prox.value}}" maxlength="50" class="form-control" placeholder="Próxima" title="" id="id_ps_prox"></div></div>
+                <div class="col">
+                    <label class="form-label" for="id_ps_fecha">{{form.ps_fecha.label}}</label>
+                    <input type="text" name="ps_fecha" value="{{form.ps_fecha.value}}" class="form-control datepicker_input" placeholder="Fecha" title="" id="id_ps_fecha">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="card border-0 shadow mb-4">
+        <div class="card-header">
+            <h5 class="card-title">Índice UV</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col">{% bootstrap_field form.uv_actual %}</div>
+                <div class="col">{% bootstrap_field form.uv_prox %}</div>
+                <div class="col">
+                    <label class="form-label" for="id_uv_fecha">{{form.uv_fecha.label}}</label>
+                    <input type="text" name="uv_fecha" value="{{form.uv_fecha.value}}" class="form-control datepicker_input" placeholder="Fecha" title="" id="id_uv_fecha">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="row">
+        <div class="mb-3">
+            <button type="submit" class="btn btn-success animate-up-2">Actualizar Información</button>
+            <a href="{% url 'pronostico_list' %}" type="button" class="btn btn-secondary animate-up-2">Cerrar</a>
+        </div>
+    </div>
+
+</form>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script>
+    /* Bootstrap 5 JS included */
+    /* vanillajs-datepicker 1.1.4 JS included */
+
+    const getDatePickerTitle = elem => {
+        // From the label or the aria-label
+        const label = elem.nextElementSibling;
+        let titleText = '';
+        if (label && label.tagName === 'LABEL') {
+            titleText = label.textContent;
+        } else {
+            titleText = elem.getAttribute('aria-label') || '';
+        }
+        return titleText;
+    }
+
+    const elems = document.querySelectorAll('.datepicker_input');
+    for (const elem of elems) {
+        const datepicker = new Datepicker(elem, {
+            autoclose: true,
+            'format': 'dd/mm/yyyy',
+
+            title: getDatePickerTitle(elem)
+        });
+    }
+</script>
+
+{% endblock javascripts %}

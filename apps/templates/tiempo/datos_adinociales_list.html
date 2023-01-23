@@ -1,0 +1,147 @@
+{% extends "layouts/base.html" %}
+{% load bootstrap5 %}
+{% block title %} Listado de datos adicionales {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="/static/assets/datatables/datatables.min.css" />
+
+
+{% endblock stylesheets %}
+
+{% block content %}
+<div class="row">
+    <div class="col-8 justify-content-start mt-2">
+        <div class="form-group">
+            <label for="synop">Grupo de fenómenos especiales de:</label>
+            <p id="synop"> {{code.synop_code | slice:72}}</p>
+        </div>
+    </div>
+
+    <div class="col-4 d-flex justify-content-end mt-2">
+        <div class="form-group">
+            <br>
+            <a href="{% url 'synop_update' synop_id %}" class="btn btn-primary animate-up-2">Regresar</a>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="card border-0 shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="datos_adinocialesTable" class="table table-centered table-nowrap mb-0 rounded">
+                <thead class="thead-light">
+                    <tr>
+                     
+
+                        <th class="border-0">Valor</th>
+                        <th class="border-0">Descripción</th>
+                        <th class="border-0">SpSp</th>
+                        <th class="border-0">spsp</th>
+                        <th class="border-0 rounded-end">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for dato in datos_adinociales  %}
+
+                    <!-- Item -->
+                    <tr>
+                     
+
+                        <td> {{dato.value}} </td>
+                        <td> {{dato.descripcion}} </td>
+                        <td> {{dato.var_SpSp}} </td>
+                        <td> {{dato.var_ss}} </td>
+
+                        <td class="text-success">
+                            <div class="d-flex align-items-center">
+                                <div class="btn-group" role="group" aria-label="Basic example">
+
+                                    <a href="{% url 'datos_adinociales_update' synop_id dato.id %}" type="button"
+                                        class="btn btn-sm btn-secondary">
+                                        <i class="fas fa-edit" aria-hidden="true"></i>
+                                    </a>
+                                    <!--
+                                    <button onclick="delete_dato('#')" type="button"
+                                        class="btn btn-sm btn-primary">
+                                        <i class="fas fa-trash" aria-hidden="true"></i>
+                                    </button>
+                                    -->
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- End of Item -->
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--<div class="modal fade" id="update_dato" role="dialog"></div>-->
+<div class="modal fade" id="delete_dato" role="dialog"></div>
+<div class="modal fade" id="create_dato" role="dialog"></div>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script>
+    function create_dato(url) {
+        $('#create_dato').load(url, function () {
+            $(this).modal('show');
+        });
+    }
+</script>
+
+<script>
+    function delete_dato(url) {
+        $('#delete_dato').load(url, function () {
+            $(this).modal('show');
+        });
+    }
+</script>
+
+<script>
+    function update_dato(url) {
+        $('#update_dato').load(url, function () {
+            $(this).modal('show');
+        });
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        var table = $('#datos_adinocialesTable').DataTable({
+
+            buttons: [{
+                extend: 'copy',
+                text: 'Copiar'
+            }, 'csv', 'excel', 'pdf'],
+            language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontró nada - lo sentimos",
+                "info": "Mostrando pagina _PAGE_ de _PAGES_",
+                "infoEmpty": "No hay registros disponibles",
+                "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                "search": "Buscar:",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                },
+            }
+        });
+
+        table.buttons().container()
+            .appendTo('#datos_adinocialesTable_wrapper .col-md-6:eq(0)');
+    });
+</script>
+
+{% endblock javascripts %}

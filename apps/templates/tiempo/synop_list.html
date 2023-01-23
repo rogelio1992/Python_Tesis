@@ -1,0 +1,237 @@
+{% extends "layouts/base.html" %}
+{% load bootstrap5 %}
+{% block title %} Gestionar códigos Synop {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="/static/assets/datatables/datatables.min.css" />
+
+
+{% endblock stylesheets %}
+
+{% block content %}
+{% if msg %}
+
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: '{{msg}}',
+        confirmButtonText: 'Aceptar',
+        showConfirmButton: true,
+
+    })
+</script>
+{% endif %}
+<form action="{% url 'synop_list'%}" method="post" enctype="multipart/form-data"> {% csrf_token %}
+    <label class="my-1 me-2" for="country">Seleccione Estación</label>
+    <div class="row mb-5">
+        <div class="col-6">
+            <select class="form-select" id="estaciones" name="estaciones" aria-label="Default select example">
+
+                {% for val in estaciones %}
+                <option value="{{val.code}}">{{val.name}}</option>
+                {% endfor %}
+               
+            </select>
+
+        </div>
+       <div class="col-2">
+            <div class="input-group">
+                <input type="text" id="fecha_inicio" name="fecha_inicio" class="datepicker_input form-control" placeholder="Fecha Inicio" required >
+            </div>
+       </div>
+        <div class="col-2">
+            <div class="input-group">
+                <input type="text" id="fecha_fin" name="fecha_fin" class="datepicker_input form-control" placeholder="Fecha Fin" required >
+            </div>
+        </div>
+        
+        <div class="col">
+            <button type="submit" class="btn btn-secondary text-dark ">Filtrar</button>
+        </div>
+      
+        
+       
+    </div>
+    
+
+</form>
+
+
+
+
+
+<div class="card border-0 shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="synopsTable" class="table table-centered table-nowrap mb-0 rounded">
+                <thead class="thead-light">
+                    <tr>
+                        <!--<th class="border-0 rounded-start">#</th>-->
+                        <th class="border-0">Código</th>
+                        <th class="border-0">Estación</th>
+                        <th class="border-0">Fecha:</th>
+                        <th class="border-0">Hora:</th>
+                        <th class="border-0">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for synop in synops  %}
+
+                    <!-- Item -->
+                    <tr>
+                        <!--<td><a href="#" class="text-primary fw-bold">{{synop.id}}</a> </td>-->
+                        <td>{{synop.synop_code | slice:34}}</td>
+                        <td> {{synop.estacion}} </td>
+                        <td> {{synop.fecha |date:'d/m/Y'}} </td>
+                        <td> {{synop.hora}}-UTC </td>
+                        <td class="text-success">
+                            <div class="d-flex align-items-center">
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <a href="{% url 'synop_detail' synop.id %}" type="button" class="btn btn-sm btn-info">
+                                        <i class=" fa fa-info-circle" aria-hidden="true"></i>
+                                    </a>
+                                    <a href="{% url 'synop_update' synop.id %}" type="button"
+                                        class="btn btn-sm btn-secondary">
+                                        <i class="fas fa-edit" aria-hidden="true"></i>
+                                    </a>
+                                    <button onclick="delete_synop('{% url 'synop_delete' synop.id %}')" type="button"
+                                        class="btn btn-sm btn-primary">
+                                        <i class="fas fa-trash" aria-hidden="true"></i>
+                                    </button>
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- End of Item -->
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--<div class="modal fade" id="update_synop" role="dialog"></div>-->
+<div class="modal fade" id="delete_synop" role="dialog"></div>
+<div class="modal fade" id="create_synop" role="dialog"></div>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script>
+    function create_synop(url) {
+        $('#create_synop').load(url, function () {
+            $(this).modal('show');
+        });
+    }
+</script>
+
+<script>
+    function delete_synop(url) {
+        $('#delete_synop').load(url, function () {
+            $(this).modal('show');
+        });
+    }
+</script>
+
+<script>
+    function update_synop(url) {
+        $('#update_synop').load(url, function () {
+            $(this).modal('show');
+        });
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        var table = $('#synopsTable').DataTable({
+            ordering: false,
+           
+            language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontró nada - lo sentimos",
+                "info": "Mostrando pagina _PAGE_ de _PAGES_",
+                "infoEmpty": "No hay registros disponibles",
+                "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                "search": "Buscar:",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                },
+            }
+
+           
+        });
+
+        $('#synopsTable thead tr').clone(true).appendTo( '#synopsTable thead' );
+ 
+        $('#synopsTable thead tr:eq(1) th').each( function (i) {
+          
+                var title = $(this).text(); //es el nombre de la columna
+            if (title !='Acciones'){
+                $(this).html( '<input class="ms-0 form-control" type="text" placeholder="'+title+'" />' );
+        
+                $( 'input', this ).on( 'keyup change', function () {
+                    if ( table.column(i).search() !== this.value ) {
+                        table
+                            .column(i)
+                            .search( this.value )
+                            .draw();
+                    }
+                } );
+            }
+            else{
+                $(this).html( '<input hidden class="form-control " type="text" placeholder="'+title+'" />' );
+        
+                $( 'input', this ).on( 'keyup change', function () {
+                    if ( table.column(i).search() !== this.value ) {
+                        table
+                            .column(i)
+                            .search( this.value )
+                            .draw();
+                    }
+                } );
+            };
+           
+        } );  
+   
+
+        table.buttons().container()
+            .appendTo('#synopsTable_wrapper .col-md-6:eq(0)');
+    });
+</script>
+<script>
+    /* Bootstrap 5 JS included */
+    /* vanillajs-datepicker 1.1.4 JS included */
+    
+    const getDatePickerTitle = elem => {
+      // From the label or the aria-label
+      const label = elem.nextElementSibling;
+      let titleText = '';
+      if (label && label.tagName === 'LABEL') {
+        titleText = label.textContent;
+      } else {
+        titleText = elem.getAttribute('aria-label') || '';
+      }
+      return titleText;
+    }
+    
+    const elems = document.querySelectorAll('.datepicker_input');
+    for (const elem of elems) {
+      const datepicker = new Datepicker(elem, {
+        autoclose: true,
+        'format': 'yyyy-mm-dd',
+        
+        title: getDatePickerTitle(elem)
+      });
+    }      
+    </script>
+
+
+{% endblock javascripts %}

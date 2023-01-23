@@ -1,0 +1,56 @@
+{% extends "layouts/base.html" %}
+{% load bootstrap5 %}
+{% block title %}Actualizar Esatación{% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+
+<form action="{% url 'estacion_update'  object.id %}"  class="mt-2" method="post" enctype="multipart/form-data">{% csrf_token %}
+    
+        <div class="card border-0 shadow mb-4">
+            <div class="card-header">
+                <h5 class="card-title">Esatación de {{object.name}}</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                   
+                    <div class="row">
+                   
+                        <div class="col-4">
+                            {% bootstrap_field form.name %}
+                        </div>
+                        <div class="col-4">
+                            {% bootstrap_field form.code %}
+                        </div>
+                        <div class="col-4">
+                            {% bootstrap_field form.provincia %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row text-end">
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-success animate-up-2">Actualizar</button>
+                        <a href="{% url 'estacion_list' %}" type="button" class="btn btn-secondary animate-up-2">Cerrar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+   
+
+
+    
+</form>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+
+{% endblock javascripts %}

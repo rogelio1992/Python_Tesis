@@ -1,0 +1,51 @@
+{% extends "layouts/base.html" %}
+{% load bootstrap5 %}
+{% block title %} Crear contacto {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="h5 mb-4">Crear usuario</h2>
+
+    </div>
+    <form action="{% url 'contacto_create' %}" method="post" enctype="multipart/form-data"> {% csrf_token %}
+        <div class="card-body">
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-3"><label class="form-label" for="id_nombre">Nombre</label><input type="text" name="nombre" maxlength="250" class="form-control" placeholder="Nombre" title="" required="" pattern="[a-zA-Z áéíóúÁÉÍÓÚ]{2,254}" id="id_nombre"></div>
+                </div>
+                <div class="col-6">
+                    {% bootstrap_field form.tipo_telefono %}
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3"><label class="form-label" for="id_telefono">Teléfono</label><input type="text" name="telefono" maxlength="250" class="form-control" placeholder="Teléfono"  title="" required="" pattern="[0-9]{6,254}" id="id_telefono"></div>
+                </div>
+                <div class="col">
+                    {% bootstrap_field form.correo %}
+                </div>
+            </div>
+            
+        </div>
+        <div class="card-footer col text-end">
+            <a type="button" href="{% url 'contacto_list' %}" class="btn btn-secondary animate-up-2" >Cancelar</a>
+            <button type="submit" class="btn btn-primary animate-up-2">Crear</button>
+        </div>
+    </form>
+</div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+
+{% endblock javascripts %}

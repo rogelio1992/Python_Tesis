@@ -1,0 +1,233 @@
+       {% load static %}
+
+
+
+       <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
+         <a class="navbar-brand me-lg-5" href="/">
+           <img class="navbar-brand-dark" src="/static/assets/img/brand/light.svg" alt="Volt logo" /> <img
+             class="navbar-brand-light" src="/static/assets/img/brand/dark.svg" alt="Volt logo" />
+         </a>
+         <div class="d-flex align-items-center">
+           <button class="navbar-toggler d-lg-none collapsed" type="button" data-bs-toggle="collapse"
+             data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+             aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+           </button>
+         </div>
+       </nav>
+
+       <nav id="sidebarMenu" class="sidebar d-lg-block bg-gray-800 text-white collapse" data-simplebar>
+         <div class="sidebar-inner px-4 pt-3">
+           <div
+             class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
+             <div class="d-flex align-items-center">
+               <div class="avatar-lg me-4">
+                 <img src="/static/assets/img/team/profile-picture-3.jpg"
+                   class="card-img-top rounded-circle border-white" alt="Bonnie Green">
+               </div>
+               <div class="d-block">
+                 <h2 class="h5 mb-3">Hi, Jane</h2>
+                 <a href="/page-sign-in.html" class="btn btn-secondary btn-sm d-inline-flex align-items-center">
+                   <svg class="icon icon-xxs me-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                     xmlns="http://www.w3.org/2000/svg">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                       d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
+                     </path>
+                   </svg>
+                   Sign Out
+                 </a>
+               </div>
+             </div>
+             <div class="collapse-close d-md-none">
+               <a href="#sidebarMenu" data-bs-toggle="collapse" data-bs-target="#sidebarMenu"
+                 aria-controls="sidebarMenu" aria-expanded="true" aria-label="Toggle navigation">
+                 <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                   <path fill-rule="evenodd"
+                     d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                     clip-rule="evenodd"></path>
+                 </svg>
+               </a>
+             </div>
+           </div>
+
+           <ul class="nav flex-column pt-3 pt-md-0">
+             <li class="nav-item">
+               <a href="/" class="nav-link d-flex align-items-center">
+                 <span class="sidebar-icon">
+                   <img src="{% if company_settings.miniature %} {{company_settings.miniature.url}} {% endif %} "
+                     height="20" width="20" alt="Volt Logo">
+                 </span>
+                 <span class="mt-1 ms-1 sidebar-text">{{company_settings.company_name}}</span>
+               </a>
+             </li>
+             <li class="nav-item {% if 'dashboard' in segment %} active {% endif %}">
+               <a href="{% url 'home' %}" class="nav-link">
+                 <span class="sidebar-icon">
+                  <img width="20" height="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAADJElEQVRoge2YP2hTURTGv/OakFpooIMu4iJ2EYeCYIeC1tH+kSTCG2xfA006OBi1QnGziIMVB2kHoWkjbQxoqE2hVhEHJ0EQpV0cOjgIFfxDHUqRNOk7Dklom96X3vd629dCflPeuSfnfl9u7s3JBapUqeKYeDIzOJacfuCmBnL6xngyM0jA3cITD0WN0B1VouzgyMBW8SXcMbGjgbFkhnczQdQIOl5lGbS9LL4fVA24zaE3UHGDiU8bu2ycTk8mp495ocVA3A6gsZiwCMJczuSRaz2hX3arWxpQI74ED4HxGUTjAOotklaYqLevOzBlp7LQgFrxBZgZRDueqMxEuh0Twj1AoH92xMkgIb6QxjyeSKSPytYVGogagSGAXGkNAPjZ670um2x5CrlpgoEO2dyKx2jBhCuckk08qL8D0v3XnjdzTmCwSaBPREitLvtGY7G2rFXugVwBAmkAmpkxXNeQ/TgxMXvcKvdAGiijKaflXw0Pv/aJBnc0EDWCxMw31OuyRVNdQ7ZPNCC1AgTqUqvHCWINcl8hwmmlWhzBZ0TRw7AHSpiioJwBxlelUhxBQg1ye0DDM7VinMApUVTKwOqybxTAvFI99pj3+3KjogEpA7FYW9ZrejrgggliXvCang5d19dE49KbOBzuXPL7cs1g7gfwAxabShEM4CeBB+pr8+fC4c4lq8Q9u3SKJzOtBLzfkESXoz2BWdXzeFQXLLH5LykR3kYM9eKL8zgjkXp5kllrZxMtRDgRMYItpbFtn/4WeCxqhIRtQaWaVthaAWam8VSmB0w3TRNNAAACmPFic16FC4EFvy8fc1JTiYGx1Ew/MT0qj5OGD5ufo0bwIgA8TU01rps1i8XwX00zQ7qub7kwkK1phb1WgvmWKExkzoni+XXtUvGlSYSu3q4r33ZbsxxbBghUu21+4ItQGACiggEC7kW6g29U1CzHngGi59tijMei3HQ6fQTg8wDe1fty91XUFGHLQH61ZoAZIwD+APhO4NsRIyDsk1bWvK0Afq/XeK7qur6uoua+Ek/OPIynMmfd1uGYxOT0Bbc1VKlS5RDwHyTUHmgRie+rAAAAAElFTkSuQmCC">
+                 </span>
+                 <span class="sidebar-text">Inicio</span>
+               </a>
+             </li>
+       
+
+            <li class="nav-item {% if 'resumen' in segment %} active {% endif %}">
+              <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
+                data-bs-toggle="collapse" data-bs-target="#resumenes">
+                <span>
+                  <span class="sidebar-icon">
+                    <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                    <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                  </svg>
+                  </span>
+                  <span class="sidebar-text">Estadisticas</span>
+                </span>
+                <span class="link-arrow">
+                  <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                </span>
+              </span>
+              <div class="multi-level collapse {% if 'resumen' in segment %} show {% endif %}" role="list"
+                id="resumenes" aria-expanded="false">
+                <ul class="flex-column nav">
+
+                
+                  <li class="nav-item {% if 'resumen-estadisticas' in segment %} active {% endif %}">
+                    <a href="{% url 'resumen_tiempo' %}" class="nav-link">
+                      <span class="sidebar-text">Resumen mensual</span>
+                    </a>
+                  
+                  </li>
+                  <li class="nav-item {% if 'resumen-utiles' in segment %} active {% endif %}">
+                    <a href="{% url 'utiles' %}" class="nav-link">
+                      <span class="sidebar-text">Resumen diario</span>
+                    </a>
+                  </li>
+                 
+                </ul>
+              </div>
+            </li>
+
+
+            {% if request.user.permiss != 'Usuario' %}
+         
+             <li class="nav-item {% if 'suynop_parser' in segment %} active {% endif %}">
+               <a href="{% url 'suynop_parser'%}" class="nav-link">
+                 <span class="sidebar-icon">
+                  <img height="20" white="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAAE0ElEQVRoge2ZbWiVZRjHf9f9nLOdgtr6kmSOKCukcEWslD5US8VefNupTpQeh3mGqAXmwkgIHoKkbEgkZHNnrXa2hIfybNPWmyJFEUgQznxB0EKngRC5+cHt7Jzn6kPbmnPbeXvmMdjv27mv67rv//+c+36e81wPTDHFFFNMMcUUyGQv0NDyxVzUCgruHDB3A6WgKeAscE5F9/kwHatWLDuczzqTZiTa3LZYRd8WmJ2hkp+Nq2+8tDL4fS7reW6k3nFKrD5/PcLzudQr0lpSnKgJhUKXsqnz1MiO5t03+0W+Be7Lc6pfUrhL1oSf+TPTApPngsM0NTUFfCJfkb8JgAoL0+E4znWZFnhmJOUr3SbwgFfzARW9/f6dmSZnvLUam9srXEm9IshjwDSU8wgnEI1JihNq5Ec8/GKGMebRyPKlP6RL86VLUFX5ONa+RcV9XZD/jAtlQBkq89SgTNYVUN13gIfTpaVdvDEWf0vhTU9E5Yrq7MjK4G8TpUy4FXZ+0nGvwmZvVWWPiFmSLmdCI5bPXQtYninKGZ2XLmNCI6q6wDsxuaMwI13OmIfdtm0z/Y77F4De7r2snLglXcIVh31nc9tCC95X0VmToykn1BVdkpSin9YtX/T3WAnDRhzHsXr7/VuBjVdNXvYkBG1Nqt9es3Lx6ZGB4TPS2+/fzrVtAqBIkVWWJLsaWtqeHRkQgGhL24uothZGW86kBK1eHQ62AkhTU1Mg5Ss9RQYH6tpD+tSVOTXVS7tM0ldaxf/SBIAGxGg9gBFlUaHl5IfObWje/bhBeLDQUvLGmOcMMK3QOvJFVB8xQHGhhXjArQblfKFVXIboEWADqrMDUlwSkOISS6RchFeBo+NUWT6E40DZ1VM6LglV3Xj2ZNcO27bdUbHDwGHHcbZfTPjXqVIHFA0FRaXbJ8IeVQr9LzeB8FRNOLh/5GA0Fv8SRCPhZYsAQqFQCtgebYkfRelk0Iwr7kHjS+lnQM9Vlz4CVd0YWVG1f4zQQtAnRg8O5tYOfRbYZaqrg3+hbJlMoRMieqQkkPwo27Ibiwd2AMcAVLneAHSfOlQnyl6PJWaGSsPglsmKUCiUQqUBQESqDIBt225fYOCFQphxU9a+XGstwz4AUam47MHKtm1TNrO8VpHNQGmeGjMiVTxQuiYU6onG4p3AkxmWdUbCVU/XO06J1e+/AFy47Jndtm13dTj4nt/VO1X1ZRG+QTkDJLw2cCUy+pI7EaO3okz6+5HxaGxuO6aisybqWUVj8SRAJFw1Zm+h4dP2cjHuIVE57n2LM1NEfwUQI/NzncKY1HwYvI94pStbXNXPAVSpcRwn696Z4zgWamoAUNoLZqQkkNwL/A7cczHhX5dtfU+fb72KzkL442zZTR0FMxIKhRIiUgugSl20JT5GN1G+BjpHj0Zb4vNEpA5AU7rBrqxMFuywD9HYHK9ToRZIiPDaDUUDH453g3Qcx+rp860fNOEHtkXCVbWQwWuFyebMqUObZswsT4JsUuWD3n7/2sbY7qgR812iKHEawFwqvg3LXXCxTyLyb+NQQd/tPtk13GAv+C8yRDQWXwZsBe5Kk3pCXd1UUx1sHzl4zRgBsA8c8JV1X1iqsBh4CJg+GDoHHBTYc2ZGabtdWZkcXfsPwqGtlUExPsoAAAAASUVORK5CYII=">
+                 </span>
+                 <span class="sidebar-text">Interpretar Synop</span>
+               </a>
+             </li>
+             {% endif %}
+             {% if request.user.permiss != 'Usuario' %}
+         
+              
+             <li class="nav-item {% if 'gestionar_synop' in segment %} active {% endif %}">
+               <a href="{% url 'synop_list'%}" class="nav-link">
+                 <span class="sidebar-icon">
+                  <img white="20" height="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAACJklEQVRIie3Uz2sTQRTA8e+bjR6kooJHhXrRi7eCERT0ILZSxLRQRKSJmNDqzT9AsIJ/g4ekCeZHK2LbpIgUEZFgDyr4D4giKFKoIJbeNJnnwQTiZptsNktOfbeZ2Tef+bHzYDcGFNJPcja7ul/36izYy6icRGQf6CdRvZ2MT653yo0EReeLy+OKfQQcBmlsQRFY6oYGhjOlylVUFwHT2i8wl5yeuO9njp6POp1fOW6MfACGgqLgWrGvBCN3+kUDwcB42yQ18t2SsoWVs/3CB9wd1uF8p4RMsTxnRR72C2+6O9RwrhMqcE/gWJ+wVj06PXfcRBvNn61jPT2nXKEStehU+1oYni+Vv6BUEX3t/JFqLcKNFhRUPweCMwvlEWt1DY87buLAMCqJesTjnYpZbG36OupcoRIVyyvgkN+F/mfCpvyWJz3BuUIlakVfsNNOu4dVlVQyeWXbNxwCui1wLRWPPXMPOCGhW6gUEYYac/4QkTyYZGo69sYrwbNWZxbKI2J5ib873TIqozfjsXc+vt0ZHgTaBmeLqycU+xY46AfFcDF1feJ9ryi0/Vz1B/9Qeb7HRo6o2KPAmhdqVEaDouAqIIqcAVCp30okYt8Bco8rs7amX91okONtjV5rdSgouEumyDqqU6ImnSktzziOI7ZGOmy0DbZ1e9cYuQBcEjXfbE2bQ7+MylhYKLiOeiYx+dFaPS3oErABbCDy1DH1U2GiuzHQ+AsmWda/73a92wAAAABJRU5ErkJggg==">
+                 </span>
+                 <span class="sidebar-text">Gestionar Synop</span>
+               </a>
+             </li>
+
+             {% endif %}
+             {% if request.user.permiss != 'Usuario' %}
+
+             <li class="nav-item {% if 'gestionar_pronostico' in segment %} active {% endif %}">
+              <a href="{% url 'pronostico_list'%}" class="nav-link">
+                <span class="sidebar-icon">
+                <img white="20" height="20" src="data:image/png;base64,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">
+                </span>
+                <span class="sidebar-text">Pronósticos</span>
+              </a>
+            </li>
+     
+            {% endif %}
+
+            <li class="nav-item {% if 'contactos' in segment %} active {% endif %}">
+              <a href="{% url 'contactos'%}" class="nav-link">
+                <span class="sidebar-icon">
+                <img white="20" height="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAAERUlEQVRoge2YX2hbdRTHv+d3c29qOzvH0GIFHxTZm/gkKILTifUvaaJEaXtTsyZ2Miyb+AdxaFGHClOxD9vcUtOmndM7t3Qg1lKrw4kPiuLbXpyIdJO6B2lLs+XPvccXk2ZJ7s39Zaud9H6e8jvn/M75Hn6/3HsSwMPDw8NjFaDiB8MwtIWc+gYYOoDrV1GTG84CPNbqL7waDodzAOArehayvtcBvLhq0uRoB+ilxQsaA3gZAMSyjyKrJKphmLi3+LmskSv+OtWipFk4Rf2fWLuNMGAwWXdQTrSKfP46ED8FYGEFtEnhqx+yDINTcT3UW2ZaBDCaTCY/NZVrhkHoqpNilkFdgNVEoC9xGW+EVCKFxDu17NFo9IIo5HcAsBy2nzJh3R7XO0/G9dA0M4ZkatdDppFCtDtwys65dWv4HEB/2RYierxff+zP4to673sFwK8S9R2RaYRdhLTYunK5c+XL/v5HMxCiT6K+IzKNqCMjR9rsnHsPfb4BwDo7P6vag5U2zWz6CUBeQoMtUt+RvE+7yc6ncnYTyma3ari30pJDZicAVUaDHVJXizNzP9o512vmz3C4fgzcmxhPbymuh4a+8IPwvER9R2QaIdHSFrBzLmbVTjieCADGh6nUVAsADAw8lAVjj0R9R6SuFjHvNwxDqbQbhqEwsNdFipuztFSKi0WCbwLYJ6PBDtkX0sbFrP/hSuP8ed8jADa6SUCgSCI1sbO4bvXnnwXoE0kdVciPKGzuqEoiaEAqCfGexPhEFwCEw2Fz9vQv3ag+UamnmfyIQEKrNDFYatQBIMA8cnD0WAAABgcHrZge3M7EuwDMM/EujZs3QIi7AZx2l1AWxky1ib6SzgOoJOhI8WQAIN4T2p35298W7wntjkQ6lmLdgW/NjO9WAB/AefxZfsokxtJOb+4CgEki7OvrCU7WCjiQmugQxNsBPAC5d4NF4Bf69NB7TkHD4+n7mTFVaY/pQQLqT7/zBLxvKWJ/vCsw5xT4dKRzCsDUwY+PtwnT2sbAcwBa6+QHAMGgdxPj6ds0q/mZSKRjqVYQWZxlsn+6O53ILCDuiemBhga75KHPbilY4hsC3SCx7TcGb4vroely4/Dh4+1WwfyhVq7iidg2QsATfXrQkNR/EYnUsSdBdLiBrSdAPJK3MKlYvmuFYh4FsKlWYN2rlWM+0YCAixCFwoylNjRKbQbTZpUAKKarDbaNqERzibF0IyJKOD5mLjNr98+HK5U12cgfzLxF4+Z1INwHwu8roKfhGq5nJGaOxiOhr/9dznw0OhG3BE87bpLkUmq4PhGfOf99+Tp/Vc7212KjXEoN140UlPV3lq+VrHKX273/RY3yRs46BRJRsmLrAbdF3CJbg8FnSpGlJEypOnVurFi3u5MnhVQNomXNpUaubsq9Rkxvw/5kTlasv5NR6BJXNRh8BoS3WrX84Apo8PDw8PBwzz8ANmyH4RSUcgAAAABJRU5ErkJggg==">
+              </span>
+                <span class="sidebar-text"> Contactos</span>
+              </a>
+            </li>
+         
+            {% if request.user.permiss == 'Administrador' or request.user.is_superuser%}
+             <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
+           
+            
+           
+            <li class="nav-item {% if 'general-settings' in segment %} active {% endif %}">
+              <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
+                data-bs-toggle="collapse" data-bs-target="#generel_settings">
+                <span>
+                  <span class="sidebar-icon">
+                    <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                  </span>
+                  <span class="sidebar-text">Ajustes</span>
+                </span>
+                <span class="link-arrow">
+                  <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                </span>
+              </span>
+              <div class="multi-level collapse {% if 'general-settings' in segment %} show {% endif %}" role="list"
+                id="generel_settings" aria-expanded="false">
+                <ul class="flex-column nav">
+                  <li class="nav-item {% if 'general-settings-company' in segment %} active {% endif %}">
+                    <a href="{% url 'ajustes' company_settings.id %}" class="nav-link">
+                      <span class="sidebar-text">Ajustes generales</span>
+                    </a>
+                  </li>
+                  <li class="nav-item {% if 'general-settings-users' in segment %} active {% endif %}">
+                    <a href="{% url 'users_list' %}" class="nav-link">
+                      <span class="sidebar-text">Gestión de usuarios</span>
+                    </a>
+                  </li>
+                  <li class="nav-item {% if 'general-settings-contacto' in segment %} active {% endif %}">
+                    <a href="{% url 'contacto_list' %}" class="nav-link">
+                      <span class="sidebar-text">Gestión de contactos</span>
+                    </a>
+                  </li>
+                  <li class="nav-item {% if 'general-settings-estacion' in segment %} active {% endif %}">
+                    <a href="{% url 'estacion_list' %}" class="nav-link">
+                      <span class="sidebar-text">Gestión de Estaciones</span>
+                    </a>
+                  </li>
+                  <li class="nav-item {% if 'general-settings-provincia' in segment %} active {% endif %}">
+                    <a href="{% url 'provincia_list' %}" class="nav-link">
+                      <span class="sidebar-text">Gestión de Provincias</span>
+                    </a>
+                  </li>
+
+                  
+                </ul>
+              </div>
+            </li>
+
+            {% endif %}
+              
+            
+
+             </li>
+            
+             
+           </ul>
+           
+         </div>
+       </nav>

@@ -1,0 +1,92 @@
+{% extends "layouts/base.html" %}
+{% load bootstrap5 %}
+{% block title %} Utiles {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+{% endblock stylesheets %}
+
+{% block content %}
+<div class="row mt-2">
+    <div class="col-12 mb-4">
+        <div class="card  border-0 shadow">
+            <div class="card-header d-sm-flex flex-row align-items-center flex-0">
+                <div class="col-5 d-block mb-3 mb-sm-0">
+                    <div class="fs-5 fw-normal mb-2">Generar informe de las estaciones por días</div>
+
+                </div>
+            </div>
+            <div class="card-body p-2">
+                <form action="{% url 'reporte_diario'%}" method="post" enctype="multipart/form-data">{% csrf_token %}
+
+                    <label class="my-1 me-2" for="estaciones">Seleccione Estación</label>
+                    <div class="row">
+                        <div class="mb-4 d-flex justify-content-end ms-auto">
+                            <select class="me-2 form-select estacion" id="estaciones_pdf" name="estaciones_pdf"
+                                aria-label="Default select example">
+                                <option selected value="78327">Union de Reyes</option>
+                                <option value="78328">Varader</option>
+                                <option value="78329">Indio Hatuey</option>
+                                <option value="78330">Jovellanos</option>
+                                <option value="78331">Jaguey Grande</option>
+                                <option value="78332">Colón</option>
+                                <option value="78333">Playa Girón</option>
+                            </select>
+                            <div class="input-group me-2">
+
+                                <input type="text" id="fecha_reporte" name="fecha_reporte"
+                                    class="datepicker_input form-control fecha_reporte" placeholder="Fecha">
+                            </div>
+                            <div class="col-4 text-end">
+
+
+                                <button type="submit" class="btn btn-secondary text-dark btn-sm me-2 pdf">Test</button>
+                                <a id="pdf" name="pdf" type="submit" class="btn  btn-primary animate-up-2 pdf">Ver
+                                    PDF</a>
+                              
+
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script>
+    /* Bootstrap 5 JS included */
+    /* vanillajs-datepicker 1.1.4 JS included */
+
+    const getDatePickerTitle = elem => {
+        // From the label or the aria-label
+        const label = elem.nextElementSibling;
+        let titleText = '';
+        if (label && label.tagName === 'LABEL') {
+            titleText = label.textContent;
+        } else {
+            titleText = elem.getAttribute('aria-label') || '';
+        }
+        return titleText;
+    }
+
+    const elems = document.querySelectorAll('.datepicker_input');
+    for (const elem of elems) {
+        const datepicker = new Datepicker(elem, {
+            autoclose: true,
+            'format': 'yyyy-mm-dd',
+
+            title: getDatePickerTitle(elem)
+        });
+    }
+</script>
+
+
+
+
+{% endblock javascripts %}

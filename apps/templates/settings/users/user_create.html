@@ -1,0 +1,58 @@
+{% extends "layouts/base.html" %}
+{% load bootstrap5 %}
+{% block title %} Crear usuario {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="h5 mb-4">Crear usuario</h2>
+
+    </div>
+    <form action="{% url 'user_create' %}" method="post" enctype="multipart/form-data"> {% csrf_token %}
+        <div class="modal-body">
+
+            <div class="row">
+                <div class="col-8">
+                    {% bootstrap_field form.username %}
+                </div>
+                <div class="col-4">
+                    {% bootstrap_field form.permiss %}
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3"><label class="form-label" for="id_first_name">Nombre</label><input required pattern="[a-zA-Z áéíóúÁÉÍÓÚ]{2,254}" type="text" name="first_name" maxlength="150" class="form-control" placeholder="Nombre" title="" id="id_first_name"></div>
+                </div>
+                <div class="col">
+                    <div class="mb-3"><label class="form-label" for="id_last_name">Apellidos</label><input required pattern="[a-zA-Z áéíóúÁÉÍÓÚ]{2,254}" type="text" name="last_name" maxlength="150" class="form-control" placeholder="Apellidos" title="" id="id_last_name"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {% bootstrap_field form.password1 %}
+                </div>
+                <div class="col">
+                    {% bootstrap_field form.password2 %}
+                </div>
+            </div>
+        </div>
+        <div class="card-footer col text-end">
+            <a type="button" href="{% url 'users_list' %}" class="btn btn-secondary animate-up-2" >Cancelar</a>
+            <button type="submit" class="btn btn-primary animate-up-2">Crear usuario</button>
+        </div>
+    </form>
+</div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+
+{% endblock javascripts %}

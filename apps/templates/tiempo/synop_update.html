@@ -1,0 +1,191 @@
+{% extends "layouts/base.html" %}
+{% load bootstrap5 %}
+{% block title %} Actuaizar código Synop {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+
+{% endblock stylesheets %}
+
+
+
+{% block content %}
+<form action="{% url 'synop_update' object.id %}" method="post" enctype="multipart/form-data"> {% csrf_token %}
+  
+
+    <div class="row mt-3 mb-3">
+
+    <div class="col-8">
+        <button type="submit" class="btn  btn-sm btn-success btn-flotante animate-up-2" style="margin-right: 35px;"><i class="fa fa-check" aria-hidden="true"></i></button>
+        <a href="{% url 'synop_list' %}" type="button" class="btn btn-sm btn-secondary btn-flotante animate-up-2"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+
+</div>
+<div class="card border-0 shadow mb-4">
+    <div class="card-header">
+        <h5 class="card-title">Información del Synop: {{object.id}}</h5>
+    </div>
+    <div class="card-body">
+
+           
+            <div class="row">
+                {% bootstrap_field form.synop_code %}
+            </div>
+
+
+            <div class="row mb-2 ">
+                <div class="col-4">{% bootstrap_field form.tipo_synop %}</div>
+                <div class="col-4">{% bootstrap_field form.fecha %}</div>
+                <div class="col-4">{% bootstrap_field form.hora %}</div>
+            </div>
+            <div class="row mb-2 ">
+                <div class="col-8">{% bootstrap_field form.indicador_viento_Iw %}</div>
+                <div class="col-4">{% bootstrap_field form.estacion %}</div>
+
+              
+            </div>
+            <div class="row mb-2 ">
+                <div class="col">{% bootstrap_field form.var_Iy %} </div>
+            </div>
+            <div class="row mb-2 ">
+                <div class="col-6">{% bootstrap_field form.var_Ix %}</div>
+                <div class="col-6">{% bootstrap_field form.var_H %}</div>
+            </div>
+            <div class="row mb-2 ">
+                <div class="col-6">{% bootstrap_field form.var_VV %}</div>
+                <div class="col-6">{% bootstrap_field form.var_N %}</div>
+            </div>
+            <div class="row mb-2 ">
+                <div class="col-6">{% bootstrap_field form.var_dd %}</div>
+                <div class="col-6">{% bootstrap_field form.var_direccion %}</div>
+            </div>
+            <div class="row mb-2 ">
+                <div class="col-6">{% bootstrap_field form.var_ff %}</div>
+                <div class="col-6">{% bootstrap_field form.vat_TTT %}</div>
+            </div>
+            <div class="row mb-2 ">
+                <div class="col-4">{% bootstrap_field form.var_TTT_rocio %}</div>
+                <div class="col-4">{% bootstrap_field form.var_UUU %}</div>
+                <div class="col-4">{% bootstrap_field form.var_PPPP %}</div>
+            </div>
+            <div class="row mb-2 ">
+                <div class="col-4">{% bootstrap_field form.var_PPPP_mar %}</div>
+                <div class="col-4">{% bootstrap_field form.var_a %}</div>
+                <div class="col-4">{% bootstrap_field form.var_ppp %}</div>
+            </div>
+            <div class="row mb-2 ">
+                <div class="col-6">{% bootstrap_field form.var_RRR %}</div>
+                <div class="col-6">{% bootstrap_field form.var_Tr %}</div>
+            </div>
+            <div class="row mb-2 ">
+                <div class="col-6">{% bootstrap_field form.var_ww_presente %}</div>
+                <div class="col-6">{% bootstrap_field form.var_WW_pasado %}</div>
+            </div>
+            <div class="row mb-2 ">
+                <div class="col-6">{% bootstrap_field form.var_CCC %}</div>
+                <div class="col-6">{% bootstrap_field form.var_GGgg %}</div>
+
+            </div>
+            <div class="row mb-2 ">
+                <div class="col-4">{% bootstrap_field form.var_Cs %}</div>
+                <div class="col-4">{% bootstrap_field form.var_TTT_maxima %}</div>
+                <div class="col-4">{% bootstrap_field form.var_TTT_minima %}</div>
+            </div>
+            <div class="row mb-2 ">
+                <div class="col-6">{% bootstrap_field form.var_E %}</div>
+                <div class="col-6">{% bootstrap_field form.var_TT_suelo %}</div>
+            </div>
+            <div class="row mb-2 ">
+                <div class="col-6">{% bootstrap_field form.var_E_hielo %}</div>
+                <div class="col-6">{% bootstrap_field form.var_sss %}</div>
+            </div>
+            <div class="row mb-2 ">
+                <div class="col-8">{% bootstrap_field form.var_g0 %}</div>
+                <div class="col-4">{% bootstrap_field form.var_dT %}</div>
+            </div>
+            <div class="row mb-2 ">
+                <div class="col-4">{% bootstrap_field form.var_Dl %}</div>
+                <div class="col-4">{% bootstrap_field form.var_Dm %}</div>
+                <div class="col-4">{% bootstrap_field form.var_Dh %}</div>
+            </div>
+            <div class="row mb-2 ">
+                <div class="col-4">{% bootstrap_field form.var_EEE_evapo %}</div>
+                <div class="col-4">{% bootstrap_field form.var_iE %}</div>
+                <div class="col-4">{% bootstrap_field form.var_SSS_insolacion %}</div>
+            </div>
+            <div class="row mb-2 ">
+                <div class="col-4">{% bootstrap_field form.var_C_genero %}</div>
+                <div class="col-4">{% bootstrap_field form.var_D %}</div>
+                <div class="col-4">{% bootstrap_field form.var_C_angulo %}</div>
+            </div>
+            <div class="row mb-2 ">
+                <div class="col-6">{% bootstrap_field form.var_PPP_presion %}</div>
+                <div class="col-6">{% bootstrap_field form.var_RRR_presipitacion %}</div>
+            </div>
+            <div class="row mb-2 ">
+                <div class="col-6">{% bootstrap_field form.var_RRRR %}</div>
+                <div class="col-6">{% bootstrap_field form.var_N_nubes %}</div>
+            </div>
+            <div class="row mb-2 ">
+                <div class="col-6">{% bootstrap_field form.var_C_nube %}</div>
+                <div class="col-6">{% bootstrap_field form.var_hhh %}</div>
+            </div>
+
+            <div class="row mb-2 ">
+                <div class="col-4">{% bootstrap_field form.var_PhPh %}</div>
+                <div class="col-4">{% bootstrap_field form.var_CCCC %}</div>
+                <div class="col-4">{% bootstrap_field form.var_FFFF %}</div>
+            </div>
+            <div class="row mb-2 ">
+                <div class="col-4">{% bootstrap_field form.var_EEEE %}</div>
+                <div class="col-4">{% bootstrap_field form.var_dxdx %}</div>
+                <div class="col-4">{% bootstrap_field form.var_fxfx %}</div>
+            </div>
+            <div class="row mb-2 ">
+                <div class="col-6">{% bootstrap_field form.var_HeHeHe %}</div>
+                <div class="col-6">{% bootstrap_field form.var_Iv %}</div>
+            </div>
+             
+            <div class="row mb-2 ">
+                <div class="col-6">{% bootstrap_field form.var_HHH_max %}</div>
+                <div class="col-6">{% bootstrap_field form.var_HHH_min %}</div>
+            </div>
+            <div class="row mb-2 ">
+                <div class="col-4">{% bootstrap_field form.var_TTT_pos %}</div>
+                <div class="col-4">{% bootstrap_field form.var_HHH_neg %}</div>
+                <div class="col-4">{% bootstrap_field form.var_dd_ff %}</div>
+            </div>
+            <div class="row mb-2 ">
+                <div class="col-4">{% bootstrap_field form.var_HHH_rafaga %}</div>
+                <div class="col-4">{% bootstrap_field form.var_HmHmHnHn %}</div>
+                <div class="col-4">{% bootstrap_field form.var_RRR_semana %}</div>
+            </div>
+             
+        
+
+            <div class="row">
+
+                <div class="col-8">
+                    <button type="submit" class="btn btn-success animate-up-2">Actualizar Información</button>
+                    <a href="{% url 'synop_list' %}" type="button" class="btn btn-secondary animate-up-2">Cerrar</a>
+                </div>
+
+                <div class="col-4 text-end" >
+                            <a href="{% url 'datos_adinociales_list' object.id %}" type="button"
+                    class="btn btn-secondary animate-up-2">Gestionar fenómenos especiales</a>
+                </div>
+
+
+            </div>
+      
+    </div>
+</div>
+
+</form>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+
+{% endblock javascripts %}

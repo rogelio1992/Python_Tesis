@@ -1,0 +1,495 @@
+{% extends "layouts/base.html" %}
+{% load bootstrap5 %}
+{% block title %} Inicio {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+
+{% if msg %}
+<div class="card mt-5">
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <h4> {{msg}}</h4>
+                <a href="{% url 'pronostico_create' %}" class="btn btn-primary animate-up-2">
+                        <i class="fa fa-plus"></i>
+                        Crear pronóstico</a>
+            </div>
+           
+          
+        </div>
+       
+    </div>
+</div>
+
+
+    
+{%else%}
+<div class="row">
+    <div class="container py-2 h-100">
+
+       
+        <h4 class="mb-2 mt-2">{{object.fecha}}</h4>
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-8 col-lg-6 col-xl-4">
+                <div class="card-header"
+                    style=" padding:5px ;background-color:#7595d7 ; color: #4B515D; border-radius: 35px;">
+                    <div class="d-flex justify-content-center mt-1">
+                        <h5>Costa Norte</h5>
+                    </div>
+
+                </div>
+
+                <div class="card mt-2" style="color: #4B515D; border-radius: 35px;">
+                    <div class="card-body p-4">
+
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="d-flex flex-row justify-content-center mt-2 mb-2">
+                                    <div class="mt-3">
+                                        <h6 class="display-4 mb-0 font-weight-bold" style="color: #69cef5;">
+                                            {{object.n_temp_min}}°C </h6>
+                                        <h6 class="display-4 mb-0 font-weight-bold" style="color: #f3960c;">
+                                            {{object.n_temp_max}}°C </h6>
+                                    </div>
+                                    <div class="ms-3">
+                                        <img src="/static/assets/img/pronostico/tiempo/{{object.n_tiempo_manana}}.png"
+                                            width="100px">
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div>
+                                        <img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABmJLR0QA/wD/AP+gvaeTAAABVElEQVRIid3VPUscURTG8Z+6G0RhcZNasPQFFgziJiuojSkEGxENIaTJR7CwCvgJxO9gExJCbEKwEQttLU2wsIgviCY2FnYxxd3AMoyzM+ssCf7hMsO555znnGHuuTx0JrCDG5xiFcU8Bao4xyJ6MIjP+JCnSAVjEVsRB5iK8X+GL7jCNb7ieavi61iJ2OZxhjcoo4S3uKzvZeZjPUEj3zEa41vFT/RlEXiBYzyO2DsTYj7hNRTqhmHMxTh246lQ7UvhuzfyO0HkEP3RSsoxqwMbGMFeQsI4RvEjY0wmpoVjUGpH8gEs4wKz0c0F3OawfgmHttKODv49HfXnXb9wHLc4wpYwRppSaHgvZyishjW8wm7KuJaYEabAk2aOXfcQORI6KmI/yTFp9qThVIpO0hJ3xzzCN0zmJTIujIkl9GIIm3ifl8BfatgW7v0TvJPzvf//8wdcq0SarlLHYQAAAABJRU5ErkJggg==">
+
+                                        {% if  object.n_viento_vel_manana != 'VRB' %}
+                                        <span class="small" style="color: #868B94">{{object.n_viento_vel_manana}} km -
+                                            {{object.n_viento_dir_manana}}</span>
+                                        {% else %}
+                                        <span class="small" style="color: #868B94">Variable</span>
+
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="d-flex justify-content-between">
+                            <div class="row ms-3">
+                                <div class="col">
+                                    <div class="d-flex flex-row justify-content-center mt-5 mb-2">
+                                        <div class="">
+                                            <h6 class="display-5 mb-0 font-weight-bold" style="color: #69cef5;">
+                                                {{object.n_temp_tarde_min}}°C
+                                            </h6>
+                                            <h6 class="display-5 mb-0 font-weight-bold" style="color: #f3960c;">
+                                                {{object.n_temp_tarde_max}}°C
+                                            </h6>
+                                        </div>
+                                        <div class="ms-3">
+                                            <img src="/static/assets/img/pronostico/tiempo/{{object.n_tiempo_tarde}}.png"
+                                                width="50px">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row justify-content-center">
+                                        <div>
+                                            <img
+                                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABmJLR0QA/wD/AP+gvaeTAAABVElEQVRIid3VPUscURTG8Z+6G0RhcZNasPQFFgziJiuojSkEGxENIaTJR7CwCvgJxO9gExJCbEKwEQttLU2wsIgviCY2FnYxxd3AMoyzM+ssCf7hMsO555znnGHuuTx0JrCDG5xiFcU8Bao4xyJ6MIjP+JCnSAVjEVsRB5iK8X+GL7jCNb7ieavi61iJ2OZxhjcoo4S3uKzvZeZjPUEj3zEa41vFT/RlEXiBYzyO2DsTYj7hNRTqhmHMxTh246lQ7UvhuzfyO0HkEP3RSsoxqwMbGMFeQsI4RvEjY0wmpoVjUGpH8gEs4wKz0c0F3OawfgmHttKODv49HfXnXb9wHLc4wpYwRppSaHgvZyishjW8wm7KuJaYEabAk2aOXfcQORI6KmI/yTFp9qThVIpO0hJ3xzzCN0zmJTIujIkl9GIIm3ifl8BfatgW7v0TvJPzvf//8wdcq0SarlLHYQAAAABJRU5ErkJggg==">
+                                            {% if  object.n_viento_vel_tarde != 'VRB' %}
+                                            <span class="small" style="color: #868B94">{{object.n_viento_vel_tarde}}
+                                                km-{{object.n_viento_dir_tarde}}</span>
+                                            {% else %}
+                                            <span class="small" style="color: #868B94">Variable</span>
+
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row me-3">
+                                <div class="col">
+                                    <div class="d-flex flex-row justify-content-center mt-5 mb-2">
+                                        <div class="">
+                                            <h6 class="display-5 mb-0 font-weight-bold" style="color: #69cef5;">
+                                                {{object.n_temp_noche_min}}°C
+                                            </h6>
+                                            <h6 class="display-5 mb-0 font-weight-bold" style="color: #f3960c;">
+                                                {{object.n_temp_noche_max}}°C
+                                            </h6>
+                                        </div>
+                                        <div class="ms-3">
+                                            <img src="/static/assets/img/pronostico/tiempo/noche/{{object.n_tiempo_noche}}.png"
+                                                width="50px">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row justify-content-center">
+                                        <div>
+                                            <img
+                                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABmJLR0QA/wD/AP+gvaeTAAABVElEQVRIid3VPUscURTG8Z+6G0RhcZNasPQFFgziJiuojSkEGxENIaTJR7CwCvgJxO9gExJCbEKwEQttLU2wsIgviCY2FnYxxd3AMoyzM+ssCf7hMsO555znnGHuuTx0JrCDG5xiFcU8Bao4xyJ6MIjP+JCnSAVjEVsRB5iK8X+GL7jCNb7ieavi61iJ2OZxhjcoo4S3uKzvZeZjPUEj3zEa41vFT/RlEXiBYzyO2DsTYj7hNRTqhmHMxTh246lQ7UvhuzfyO0HkEP3RSsoxqwMbGMFeQsI4RvEjY0wmpoVjUGpH8gEs4wKz0c0F3OawfgmHttKODv49HfXnXb9wHLc4wpYwRppSaHgvZyishjW8wm7KuJaYEabAk2aOXfcQORI6KmI/yTFp9qThVIpO0hJ3xzzCN0zmJTIujIkl9GIIm3ifl8BfatgW7v0TvJPzvf//8wdcq0SarlLHYQAAAABJRU5ErkJggg==">
+                                            {% if  object.n_viento_vel_noche != 'VRB' %}
+                                            <span class="small" style="color: #868B94">{{object.n_viento_vel_noche}}
+                                                km-{{object.n_viento_dir_noche}}</span>
+                                            {% else %}
+                                            <span class="small" style="color: #868B94">Variable</span>
+
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4">
+                <div class="card-header"
+                    style=" padding:5px ;background-color:#7595d7 ; color: #4B515D; border-radius: 35px;">
+                    <div class="d-flex justify-content-center mt-1">
+                        <h5>Centro</h5>
+                    </div>
+
+                </div>
+
+                <div class="card mt-2" style="color: #4B515D; border-radius: 35px;">
+                    <div class="card-body p-4">
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="d-flex flex-row justify-content-center mt-2 mb-2">
+                                    <div class="mt-3">
+                                        <h6 class="display-4 mb-0 font-weight-bold" style="color: #69cef5;">
+                                            {{object.i_temp_min}}°C </h6>
+                                        <h6 class="display-4 mb-0 font-weight-bold" style="color: #f3960c;">
+                                            {{object.i_temp_max}}°C </h6>
+                                    </div>
+                                    <div class="ms-3">
+                                        <img src="/static/assets/img/pronostico/tiempo/{{object.i_tiempo_manana}}.png"
+                                            width="100px">
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div>
+                                        <img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABmJLR0QA/wD/AP+gvaeTAAABVElEQVRIid3VPUscURTG8Z+6G0RhcZNasPQFFgziJiuojSkEGxENIaTJR7CwCvgJxO9gExJCbEKwEQttLU2wsIgviCY2FnYxxd3AMoyzM+ssCf7hMsO555znnGHuuTx0JrCDG5xiFcU8Bao4xyJ6MIjP+JCnSAVjEVsRB5iK8X+GL7jCNb7ieavi61iJ2OZxhjcoo4S3uKzvZeZjPUEj3zEa41vFT/RlEXiBYzyO2DsTYj7hNRTqhmHMxTh246lQ7UvhuzfyO0HkEP3RSsoxqwMbGMFeQsI4RvEjY0wmpoVjUGpH8gEs4wKz0c0F3OawfgmHttKODv49HfXnXb9wHLc4wpYwRppSaHgvZyishjW8wm7KuJaYEabAk2aOXfcQORI6KmI/yTFp9qThVIpO0hJ3xzzCN0zmJTIujIkl9GIIm3ifl8BfatgW7v0TvJPzvf//8wdcq0SarlLHYQAAAABJRU5ErkJggg==">
+
+                                        {% if  object.i_viento_vel_manana != 'VRB' %}
+                                        <span class="small" style="color: #868B94">{{object.i_viento_vel_manana}} km -
+                                            {{object.i_viento_dir_manana}}</span>
+                                        {% else %}
+                                        <span class="small" style="color: #868B94">Variable</span>
+
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="d-flex justify-content-between">
+                            <div class="row ms-3">
+                                <div class="col">
+                                    <div class="d-flex flex-row justify-content-center mt-5 mb-2">
+                                        <div class="">
+                                            <h6 class="display-5 mb-0 font-weight-bold" style="color: #69cef5;">
+                                                {{object.i_temp_tarde_min}}°C
+                                            </h6>
+                                            <h6 class="display-5 mb-0 font-weight-bold" style="color: #f3960c;">
+                                                {{object.i_temp_tarde_max}}°C
+                                            </h6>
+                                        </div>
+                                        <div class="ms-3">
+                                            <img src="/static/assets/img/pronostico/tiempo/{{object.i_tiempo_tarde}}.png"
+                                                width="50px">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row justify-content-center">
+                                        <div>
+                                            <img
+                                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABmJLR0QA/wD/AP+gvaeTAAABVElEQVRIid3VPUscURTG8Z+6G0RhcZNasPQFFgziJiuojSkEGxENIaTJR7CwCvgJxO9gExJCbEKwEQttLU2wsIgviCY2FnYxxd3AMoyzM+ssCf7hMsO555znnGHuuTx0JrCDG5xiFcU8Bao4xyJ6MIjP+JCnSAVjEVsRB5iK8X+GL7jCNb7ieavi61iJ2OZxhjcoo4S3uKzvZeZjPUEj3zEa41vFT/RlEXiBYzyO2DsTYj7hNRTqhmHMxTh246lQ7UvhuzfyO0HkEP3RSsoxqwMbGMFeQsI4RvEjY0wmpoVjUGpH8gEs4wKz0c0F3OawfgmHttKODv49HfXnXb9wHLc4wpYwRppSaHgvZyishjW8wm7KuJaYEabAk2aOXfcQORI6KmI/yTFp9qThVIpO0hJ3xzzCN0zmJTIujIkl9GIIm3ifl8BfatgW7v0TvJPzvf//8wdcq0SarlLHYQAAAABJRU5ErkJggg==">
+                                            {% if  object.i_viento_vel_tarde != 'VRB' %}
+                                            <span class="small" style="color: #868B94">{{object.i_viento_vel_tarde}}
+                                                km-{{object.i_viento_dir_tarde}}</span>
+                                            {% else %}
+                                            <span class="small" style="color: #868B94">Variable</span>
+
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row me-3">
+                                <div class="col">
+                                    <div class="d-flex flex-row justify-content-center mt-5 mb-2">
+                                        <div class="">
+                                            <h6 class="display-5 mb-0 font-weight-bold" style="color: #69cef5;">
+                                                {{object.i_temp_noche_min}}°C
+                                            </h6>
+                                            <h6 class="display-5 mb-0 font-weight-bold" style="color: #f3960c;">
+                                                {{object.i_temp_noche_max}}°C
+                                            </h6>
+                                        </div>
+                                        <div class="ms-3">
+                                            <img src="/static/assets/img/pronostico/tiempo/noche/{{object.i_tiempo_noche}}.png"
+                                                width="50px">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row justify-content-center">
+                                        <div>
+                                            <img
+                                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABmJLR0QA/wD/AP+gvaeTAAABVElEQVRIid3VPUscURTG8Z+6G0RhcZNasPQFFgziJiuojSkEGxENIaTJR7CwCvgJxO9gExJCbEKwEQttLU2wsIgviCY2FnYxxd3AMoyzM+ssCf7hMsO555znnGHuuTx0JrCDG5xiFcU8Bao4xyJ6MIjP+JCnSAVjEVsRB5iK8X+GL7jCNb7ieavi61iJ2OZxhjcoo4S3uKzvZeZjPUEj3zEa41vFT/RlEXiBYzyO2DsTYj7hNRTqhmHMxTh246lQ7UvhuzfyO0HkEP3RSsoxqwMbGMFeQsI4RvEjY0wmpoVjUGpH8gEs4wKz0c0F3OawfgmHttKODv49HfXnXb9wHLc4wpYwRppSaHgvZyishjW8wm7KuJaYEabAk2aOXfcQORI6KmI/yTFp9qThVIpO0hJ3xzzCN0zmJTIujIkl9GIIm3ifl8BfatgW7v0TvJPzvf//8wdcq0SarlLHYQAAAABJRU5ErkJggg==">
+                                            {% if  object.i_viento_vel_noche != 'VRB' %}
+                                            <span class="small" style="color: #868B94">{{object.i_viento_vel_noche}}
+                                                km-{{object.i_viento_dir_noche}}</span>
+                                            {% else %}
+                                            <span class="small" style="color: #868B94">Variable</span>
+
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4">
+                <div class="card-header"
+                    style=" padding:5px ;background-color:#7595d7 ; color: #4B515D; border-radius: 35px;">
+                    <div class="d-flex justify-content-center mt-1">
+                        <h5>Costa Sur</h5>
+                    </div>
+
+                </div>
+
+                <div class="card mt-2" style="color: #4B515D; border-radius: 35px;">
+                    <div class="card-body p-4">
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="d-flex flex-row justify-content-center mt-2 mb-2">
+                                    <div class="mt-3">
+                                        <h6 class="display-4 mb-0 font-weight-bold" style="color: #69cef5;">
+                                            {{object.s_temp_min}}°C </h6>
+                                        <h6 class="display-4 mb-0 font-weight-bold" style="color: #f3960c;">
+                                            {{object.s_temp_max}}°C </h6>
+                                    </div>
+                                    <div class="ms-3">
+                                        <img src="/static/assets/img/pronostico/tiempo/{{object.s_tiempo_manana}}.png"
+                                            width="100px">
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-row justify-content-center">
+                                    <div>
+                                        <img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABmJLR0QA/wD/AP+gvaeTAAABVElEQVRIid3VPUscURTG8Z+6G0RhcZNasPQFFgziJiuojSkEGxENIaTJR7CwCvgJxO9gExJCbEKwEQttLU2wsIgviCY2FnYxxd3AMoyzM+ssCf7hMsO555znnGHuuTx0JrCDG5xiFcU8Bao4xyJ6MIjP+JCnSAVjEVsRB5iK8X+GL7jCNb7ieavi61iJ2OZxhjcoo4S3uKzvZeZjPUEj3zEa41vFT/RlEXiBYzyO2DsTYj7hNRTqhmHMxTh246lQ7UvhuzfyO0HkEP3RSsoxqwMbGMFeQsI4RvEjY0wmpoVjUGpH8gEs4wKz0c0F3OawfgmHttKODv49HfXnXb9wHLc4wpYwRppSaHgvZyishjW8wm7KuJaYEabAk2aOXfcQORI6KmI/yTFp9qThVIpO0hJ3xzzCN0zmJTIujIkl9GIIm3ifl8BfatgW7v0TvJPzvf//8wdcq0SarlLHYQAAAABJRU5ErkJggg==">
+
+                                        {% if  object.s_viento_vel_manana != 'VRB' %}
+                                        <span class="small" style="color: #868B94">{{object.s_viento_vel_manana}} km -
+                                            {{object.s_viento_dir_manana}}</span>
+                                        {% else %}
+                                        <span class="small" style="color: #868B94">Variable</span>
+
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="d-flex justify-content-between">
+                            <div class="row ms-3">
+                                <div class="col">
+                                    <div class="d-flex flex-row justify-content-center mt-5 mb-2">
+                                        <div class="">
+                                            <h6 class="display-5 mb-0 font-weight-bold" style="color: #69cef5;">
+                                                {{object.s_temp_tarde_min}}°C
+                                            </h6>
+                                            <h6 class="display-5 mb-0 font-weight-bold" style="color: #f3960c;">
+                                                {{object.s_temp_tarde_max}}°C
+                                            </h6>
+                                        </div>
+                                        <div class="ms-3">
+                                            <img src="/static/assets/img/pronostico/tiempo/{{object.s_tiempo_tarde}}.png"
+                                                width="50px">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row justify-content-center">
+                                        <div>
+                                            <img
+                                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABmJLR0QA/wD/AP+gvaeTAAABVElEQVRIid3VPUscURTG8Z+6G0RhcZNasPQFFgziJiuojSkEGxENIaTJR7CwCvgJxO9gExJCbEKwEQttLU2wsIgviCY2FnYxxd3AMoyzM+ssCf7hMsO555znnGHuuTx0JrCDG5xiFcU8Bao4xyJ6MIjP+JCnSAVjEVsRB5iK8X+GL7jCNb7ieavi61iJ2OZxhjcoo4S3uKzvZeZjPUEj3zEa41vFT/RlEXiBYzyO2DsTYj7hNRTqhmHMxTh246lQ7UvhuzfyO0HkEP3RSsoxqwMbGMFeQsI4RvEjY0wmpoVjUGpH8gEs4wKz0c0F3OawfgmHttKODv49HfXnXb9wHLc4wpYwRppSaHgvZyishjW8wm7KuJaYEabAk2aOXfcQORI6KmI/yTFp9qThVIpO0hJ3xzzCN0zmJTIujIkl9GIIm3ifl8BfatgW7v0TvJPzvf//8wdcq0SarlLHYQAAAABJRU5ErkJggg==">
+                                            {% if  object.s_viento_vel_tarde != 'VRB' %}
+                                            <span class="small" style="color: #868B94">{{object.s_viento_vel_tarde}}
+                                                km-{{object.s_viento_dir_tarde}}</span>
+                                            {% else %}
+                                            <span class="small" style="color: #868B94">Variable</span>
+
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row me-3">
+                                <div class="col">
+                                    <div class="d-flex flex-row justify-content-center mt-5 mb-2">
+                                        <div class="">
+                                            <h6 class="display-5 mb-0 font-weight-bold" style="color: #69cef5;">
+                                                {{object.s_temp_noche_min}}°C
+                                            </h6>
+                                            <h6 class="display-5 mb-0 font-weight-bold" style="color: #f3960c;">
+                                                {{object.s_temp_noche_max}}°C
+                                            </h6>
+                                        </div>
+                                        <div class="ms-3">
+                                            <img src="/static/assets/img/pronostico/tiempo/noche/{{object.s_tiempo_noche}}.png"
+                                                width="50px">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row justify-content-center">
+                                        <div>
+                                            <img
+                                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABmJLR0QA/wD/AP+gvaeTAAABVElEQVRIid3VPUscURTG8Z+6G0RhcZNasPQFFgziJiuojSkEGxENIaTJR7CwCvgJxO9gExJCbEKwEQttLU2wsIgviCY2FnYxxd3AMoyzM+ssCf7hMsO555znnGHuuTx0JrCDG5xiFcU8Bao4xyJ6MIjP+JCnSAVjEVsRB5iK8X+GL7jCNb7ieavi61iJ2OZxhjcoo4S3uKzvZeZjPUEj3zEa41vFT/RlEXiBYzyO2DsTYj7hNRTqhmHMxTh246lQ7UvhuzfyO0HkEP3RSsoxqwMbGMFeQsI4RvEjY0wmpoVjUGpH8gEs4wKz0c0F3OawfgmHttKODv49HfXnXb9wHLc4wpYwRppSaHgvZyishjW8wm7KuJaYEabAk2aOXfcQORI6KmI/yTFp9qThVIpO0hJ3xzzCN0zmJTIujIkl9GIIm3ifl8BfatgW7v0TvJPzvf//8wdcq0SarlLHYQAAAABJRU5ErkJggg==">
+                                            {% if  object.s_viento_vel_noche != 'VRB' %}
+                                            <span class="small" style="color: #868B94">{{object.s_viento_vel_noche}}
+                                                km-{{object.s_viento_dir_noche}}</span>
+                                            {% else %}
+                                            <span class="small" style="color: #868B94">Variable</span>
+
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="card" style="border-radius: 25px;">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="d-flex flex-column align-items-center">
+                            <div>{{object.fl_actual}}</div>
+
+                            {% if object.fl_actual != 'AUTO' %}
+                            <div> <img id="luna" class="mt-2"
+                                    src="/static/assets/img/pronostico/fase_luna/{{object.fl_actual}}.png" width="75px">
+                            </div>
+                            {% endif %}
+
+
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="d-flex flex-column align-items-start">
+                            <div>
+                                <p for="">Salida del sol : {{object.ss_actual}}</p>
+                            </div>
+                            <div>
+                                <p for="">Puesta del sol : {{object.ps_actual}}</p>
+                            </div>
+                            <div>
+                                <p for="">Índice de UV : {{object.uv_actual}} </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-6">
+                <div class="carousel-item active">
+                    <div class="d-flex justify-content-around text-center pt-2">
+                        <div class="flex-column">
+
+                            <p class="small"><strong>
+                                    <script>
+                                        let date = new Date(
+                                            '{{object.d1_fecha.month}} {{object.d1_fecha.day}}, {{object.d1_fecha.year}}'
+                                        )
+                                        let day = new Intl.DateTimeFormat('es-ES', {
+                                            weekday: 'long'
+                                        }).format(date)
+                                        document.write(day + " ")
+                                    </script>{{object.d1_fecha.day}}
+                                </strong></p>
+                            <img class="mb-1" src="/static/assets/img/pronostico/tiempo/{{object.d1_tiempo}}.png"
+                                width="30px">
+                            <p class="small mb-0" style="color: #69cef5;"><strong>{{object.d1_min }}°C</strong></p>
+                            <p class="small mb-0" style="color: #f3960c;"><strong>{{object.d1_max}}°C</strong></p>
+                        </div>
+                        <div class="flex-column">
+                            <p class="small"><strong>
+                                    <script>
+                                        let date2 = new Date(
+                                            '{{object.d2_fecha.month}} {{object.d2_fecha.day}}, {{object.d2_fecha.year}}'
+                                        )
+                                        let day2 = new Intl.DateTimeFormat('es-ES', {
+                                            weekday: 'long'
+                                        }).format(date2)
+                                        document.write(day2 + " ")
+                                    </script>{{object.d2_fecha.day}}
+                                </strong></p>
+                            <img class="mb-1" src="/static/assets/img/pronostico/tiempo/{{object.d2_tiempo}}.png"
+                                width="30px">
+                            <p class="small mb-0" style="color: #69cef5;"><strong>{{object.d2_min}}°C</strong></p>
+                            <p class="small mb-0" style="color: #f3960c;"><strong>{{object.d2_max}}°C</strong></p>
+                        </div>
+                        <div class="flex-column">
+                            <p class="small"><strong>
+                                    <script>
+                                        let date3 = new Date(
+                                            '{{object.d3_fecha.month}} {{object.d3_fecha.day}}, {{object.d3_fecha.year}}'
+                                        )
+                                        let day3 = new Intl.DateTimeFormat('es-ES', {
+                                            weekday: 'long'
+                                        }).format(date3)
+                                        document.write(day3 + " ")
+                                    </script>{{object.d3_fecha.day}}
+                                </strong></p>
+                            <img class="mb-1" src="/static/assets/img/pronostico/tiempo/{{object.d3_tiempo}}.png"
+                                width="30px">
+                            <p class="small mb-0" style="color: #69cef5;"><strong>{{object.d3_min}}°C</strong></p>
+                            <p class="small mb-0" style="color: #f3960c;"><strong>{{object.d3_max}}°C</strong></p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+    
+
+
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+
+{% endblock javascripts %}

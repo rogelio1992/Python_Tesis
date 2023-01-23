@@ -1,0 +1,39 @@
+{% extends "layouts/base.html" %}
+{% load bootstrap5 %}
+{% block title %} Actuaizar código Synop {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+
+<div class="card border-0 shadow mb-4">
+    <div class="card-header">
+        <h5 class="card-title">Informació adicional: {{object.id}}</h5>
+    </div>
+    <div class="card-body">
+        <form action="{% url 'datos_adinociales_update' synop_id object.id %}" method="post" enctype="multipart/form-data"> {% csrf_token %}
+            <div class="row">
+                {% bootstrap_form form %}
+            </div>
+          
+
+            <div class="row">
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-success animate-up-2">Actualizar Información</button>
+                    <a href="{% url 'datos_adinociales_list' synop_id %}" type="button" class="btn btn-secondary animate-up-2">Cerrar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+
+{% endblock javascripts %}

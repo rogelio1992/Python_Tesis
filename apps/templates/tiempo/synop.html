@@ -1,0 +1,87 @@
+<script src="/static/assets/vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
+{% extends "layouts/base.html" %}
+{% load bootstrap5 %}
+{% block title %} Interpretar código Synop {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+
+
+{% if msg %}
+
+<script>
+    Swal.fire({
+        icon: '{{msg.type}}',
+        title: '{{msg.title}}',
+        text: '{{msg.msg}}',
+        confirmButtonText: 'Aceptar',
+        showConfirmButton: true,
+
+    })
+</script>
+{% endif %}
+
+
+
+<div class="card border-0 shadow mb-4">
+    <div class="card-body">
+        <form action="{% url 'suynop_parser'%}" method="post" enctype="multipart/form-data"> {% csrf_token %}
+            <div class="my-4">
+                <label for="textarea">Introduzca código Synop</label>
+                <textarea class="form-control" placeholder="Código synop..." id="codigo_synom" name="codigo_synom"
+                    rows="4"></textarea>
+            </div>
+
+            <div class="row">
+                <div class=" mb-3">
+                    <button type="submit" class="btn btn-success animate-up-2" id="synop_save">Interpretar
+                        Synop</button>
+                    <a href="{% url 'suynop_parser'%}" type="button" class="btn btn-gray-800 animate-up-2">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+
+{% endblock javascripts %}
+
+
+
+
+
+
+<!--
+fecha: {{fecha}} <br>
+indicador del viento: {{indicador_viento}} <br>
+Número indicativo internacional de la estación meteorológica:  {{indicativo_internacional_estacion}} <br>
+Indicador de la inclusión u omisión de los datos de precipitación: {{inclusion_omision_precipitacion}} <br>
+Indicador del tipo de operación de la estación: {{ind_inclusio_omision_precipitacion}} <br>
+Altura, por encima del suelo, de la base de la nube más baja: {{altura}} <br>
+Visibilidad horizontal en superficie : {{visibilidad}} <br>
+Total de cielo nublado (en octavos) :{{total_cielo_nublado}} <br>
+Dirección de donde sopla el viento (en decenas de grados): {{direc_donde_sopla_viento}} <br>
+Velocidad del viento (en nudos): {{velocidad_viento}} <br>
+Temperatura del aire: {{temp_aire}} <br>
+Temperatura de punto de rocío: {{temp_rocio}} <br>
+Presión atmosférica (PPPP) a nivel de la estación (en hPa y décimos): {{precion_atmosferica_estacion}} <br>
+Presión atmosférica (PPPP) a nivel medio del mar: {{precion_atmosferica_mar}} <br>
+Características de la tendencia de la presión en las 3 horas que preceden a la observación : {{caracter_tendencia_barica}} <br>
+dato de precipitación : {{dato_precipitación}} <br>
+Datos de tiempo presente: {{tiempo_presente}} <br>
+Datos de tiempo presente: {{tiempo_pasado}} <br>
+Datos de Nubosidad : {{datos_nubsidad}} <br>
+Hora con minutos : {{hora_minutos}} <br>
+
+<br><br><br>
+-->
