@@ -6,18 +6,25 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('settings', '0006_alter_contacto_tipo_telefono'),
+        ("settings", "0006_alter_contacto_tipo_telefono"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='contacto',
-            name='telefono',
-            field=models.CharField(blank=True, max_length=250, null=True, verbose_name='Teléfono'),
+            model_name="contacto",
+            name="telefono",
+            field=models.CharField(
+                blank=True, max_length=250, null=True, verbose_name="Teléfono"
+            ),
         ),
         migrations.AlterField(
-            model_name='contacto',
-            name='tipo_telefono',
-            field=models.CharField(choices=[('Movil', 'Movil'), ('Fijo', 'Fijo')], default='Movil', max_length=250, verbose_name='Tipo de teléfono'),
+            model_name="contacto",
+            name="tipo_telefono",
+            field=models.CharField(
+                choices=[("Movil", "Movil"), ("Fijo", "Fijo")],
+                default="Movil",
+                max_length=250,
+                verbose_name="Tipo de teléfono",
+            ),
         ),
     ]

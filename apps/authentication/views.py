@@ -1,4 +1,4 @@
- # -*- encoding: utf-8 -*-
+# -*- encoding: utf-8 -*-
 """
 Copyright (c) 2019 - present AppSeed.us
 """
@@ -13,40 +13,44 @@ from django.urls import reverse, reverse_lazy
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
 
-from apps.settings.models import Settings,CustomUser
+from apps.settings.models import Settings, CustomUser
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-class Profile(LoginRequiredMixin,UpdateView):
+
+class Profile(LoginRequiredMixin, UpdateView):
     """
-        Esta vista es en la que se determina la informacion que se envia al template del Perfil
+    Esta vista es en la que se determina la informacion que se envia al template del Perfil
     """
+
     model = CustomUser
-    fields = ['first_name','last_name','email','avatar',]
-    template_name = 'accounts/profile.html'
-    
+    fields = [
+        "first_name",
+        "last_name",
+        "email",
+        "avatar",
+    ]
+    template_name = "accounts/profile.html"
 
     def get_success_url(self):
-        return reverse('profile', kwargs={'pk': self.get_object().id})
+        return reverse("profile", kwargs={"pk": self.get_object().id})
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["segment"] = 'profile'
+        context["segment"] = "profile"
         return context
 
 
-class ChangePasswordView(LoginRequiredMixin,SuccessMessageMixin, PasswordChangeView):
+class ChangePasswordView(LoginRequiredMixin, SuccessMessageMixin, PasswordChangeView):
     """
     Esta vista es con la que se cambia la contraseña y el mensaje  que se muestra en caso de hacerlo
     """
-    template_name = 'accounts/change_password.html'
+
+    template_name = "accounts/change_password.html"
     success_message = "Contraseña cambiada satisfactoriamente"
-    
+
     def get_success_url(self):
-        
-        return reverse('profile', kwargs={'pk':self.request.user.id})
 
-
-
+        return reverse("profile", kwargs={"pk": self.request.user.id})
 
 
 def login_view(request):
@@ -55,7 +59,7 @@ def login_view(request):
     """
     form = LoginForm(request.POST or None)
     msg = None
-  
+
     if request.method == "POST":
 
         if form.is_valid():
@@ -66,9 +70,9 @@ def login_view(request):
                 login(request, user)
                 return redirect("/")
             else:
-                msg = 'Credenciales invalidas'
+                msg = "Credenciales invalidas"
         else:
-            msg = 'Error validando el formulario'
+            msg = "Error validando el formulario"
 
     return render(request, "accounts/login.html", {"form": form, "msg": msg})
 
@@ -94,8 +98,12 @@ def register_user(request):
             # return redirect("/login/")
 
         else:
-            msg = 'Form is not valid'
+            msg = "Form is not valid"
     else:
         form = SignUpForm()
 
-    return render(request, "accounts/register.html", {"form": form, "msg": msg, "success": success})
+    return render(
+        request,
+        "accounts/register.html",
+        {"form": form, "msg": msg, "success": success},
+    )

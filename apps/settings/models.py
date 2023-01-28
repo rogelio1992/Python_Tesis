@@ -10,17 +10,25 @@ from django.db.models.signals import pre_save
 
 
 permis = (
-    ("Usuario","Usuario"),
-    ("Especialista","Especialista"),
-    ("Administrador","Administrador"),
-  
+    ("Usuario", "Usuario"),
+    ("Especialista", "Especialista"),
+    ("Administrador", "Administrador"),
 )
 
+
 class CustomUser(AbstractUser):
-    avatar = models.ImageField("Foto de perfil", upload_to='usuarios/', height_field=None, width_field=None, max_length=None,null=True, blank=True)
+    avatar = models.ImageField(
+        "Foto de perfil",
+        upload_to="usuarios/",
+        height_field=None,
+        width_field=None,
+        max_length=None,
+        null=True,
+        blank=True,
+    )
     permiss = models.CharField("Permisos", choices=permis, max_length=250)
-    
-  
+
+
 """@receiver(models.signals.post_delete, sender=CustomUser)
 def auto_delete_file_on_delete(sender, instance, **kwargs):
    
@@ -51,34 +59,54 @@ def delete_old_file(sender, instance, **kwargs):
 """
 
 
-
 class Settings(models.Model):
     id = models.AutoField(primary_key=True)
-    miniature = models.ImageField("Miniatura", upload_to='general/', height_field=None, width_field=None, max_length=None,null=True, blank=True )
-    logo = models.ImageField("Logo", upload_to='general/', height_field=None, width_field=None, max_length=None,null=True, blank=True)
+    miniature = models.ImageField(
+        "Miniatura",
+        upload_to="general/",
+        height_field=None,
+        width_field=None,
+        max_length=None,
+        null=True,
+        blank=True,
+    )
+    logo = models.ImageField(
+        "Logo",
+        upload_to="general/",
+        height_field=None,
+        width_field=None,
+        max_length=None,
+        null=True,
+        blank=True,
+    )
     company_name = models.CharField("Nombre de la Compañía", max_length=50)
     company_email = models.EmailField("Correo", max_length=254, blank=True, null=True)
-    company_phone = PhoneNumberField("Teléfono",blank=True, null=True)
-   
+    company_phone = PhoneNumberField("Teléfono", blank=True, null=True)
+
     class Meta:
         verbose_name = "Ajuste"
         verbose_name_plural = "Ajustes"
 
     def __str__(self):
         return "Ajustes generales"
-    
-    def get_absolute_url(self): # new
-        return reverse('ajustes', args=[str(self.id)])
+
+    def get_absolute_url(self):  # new
+        return reverse("ajustes", args=[str(self.id)])
 
 
-tipo_telefono = (('Móvil','Móvil'),('Fijo','Fijo'))
+tipo_telefono = (("Móvil", "Móvil"), ("Fijo", "Fijo"))
+
 
 class Contacto(models.Model):
 
     nombre = models.CharField("Nombre", max_length=250)
     telefono = models.CharField("Teléfono", max_length=250, blank=True, null=True)
-    tipo_telefono = models.CharField("Tipo de teléfono", max_length=250, choices=tipo_telefono, default='Móvil')
-    correo = models.EmailField("Correo", max_length=250, blank=True, null=True, unique=True)
+    tipo_telefono = models.CharField(
+        "Tipo de teléfono", max_length=250, choices=tipo_telefono, default="Móvil"
+    )
+    correo = models.EmailField(
+        "Correo", max_length=250, blank=True, null=True, unique=True
+    )
 
     class Meta:
         verbose_name = "Contacto"
@@ -86,9 +114,6 @@ class Contacto(models.Model):
 
     def __str__(self):
         return self.nombre
-
-
-
 
 
 """

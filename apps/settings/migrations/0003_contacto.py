@@ -6,22 +6,45 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('settings', '0002_alter_customuser_permiss'),
+        ("settings", "0002_alter_customuser_permiss"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Contacto',
+            name="Contacto",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre', models.CharField(max_length=250, verbose_name='Nombre')),
-                ('cargo', models.CharField(blank=True, max_length=250, null=True, verbose_name='Cargo')),
-                ('telefono', models.CharField(blank=True, max_length=250, null=True, verbose_name='Cargo')),
-                ('correo', models.CharField(blank=True, max_length=250, null=True, verbose_name='Cargo')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("nombre", models.CharField(max_length=250, verbose_name="Nombre")),
+                (
+                    "cargo",
+                    models.CharField(
+                        blank=True, max_length=250, null=True, verbose_name="Cargo"
+                    ),
+                ),
+                (
+                    "telefono",
+                    models.CharField(
+                        blank=True, max_length=250, null=True, verbose_name="Cargo"
+                    ),
+                ),
+                (
+                    "correo",
+                    models.CharField(
+                        blank=True, max_length=250, null=True, verbose_name="Cargo"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Contacto',
-                'verbose_name_plural': 'Contactos',
+                "verbose_name": "Contacto",
+                "verbose_name_plural": "Contactos",
             },
         ),
     ]

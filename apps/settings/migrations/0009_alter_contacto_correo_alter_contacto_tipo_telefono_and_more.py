@@ -7,23 +7,40 @@ import phonenumber_field.modelfields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('settings', '0008_alter_contacto_tipo_telefono'),
+        ("settings", "0008_alter_contacto_tipo_telefono"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='contacto',
-            name='correo',
-            field=models.EmailField(blank=True, max_length=250, null=True, unique=True, verbose_name='Correo'),
+            model_name="contacto",
+            name="correo",
+            field=models.EmailField(
+                blank=True,
+                max_length=250,
+                null=True,
+                unique=True,
+                verbose_name="Correo",
+            ),
         ),
         migrations.AlterField(
-            model_name='contacto',
-            name='tipo_telefono',
-            field=models.CharField(choices=[('Móvil', 'Móvil'), ('Fijo', 'Fijo')], default='Móvil', max_length=250, verbose_name='Tipo de teléfono'),
+            model_name="contacto",
+            name="tipo_telefono",
+            field=models.CharField(
+                choices=[("Móvil", "Móvil"), ("Fijo", "Fijo")],
+                default="Móvil",
+                max_length=250,
+                verbose_name="Tipo de teléfono",
+            ),
         ),
         migrations.AlterField(
-            model_name='settings',
-            name='company_phone',
-            field=phonenumber_field.modelfields.PhoneNumberField(blank=True, max_length=128, null=True, region=None, verbose_name='Teléfono'),
+            model_name="settings",
+            name="company_phone",
+            field=phonenumber_field.modelfields.PhoneNumberField(
+                blank=True,
+                max_length=128,
+                null=True,
+                region=None,
+                verbose_name="Teléfono",
+            ),
         ),
     ]

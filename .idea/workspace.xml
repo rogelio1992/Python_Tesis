@@ -1,8 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="335d4ba2-0b92-4a69-b205-d4b2674cb93d" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="335d4ba2-0b92-4a69-b205-d4b2674cb93d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/authentication/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/authentication/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/authentication/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/authentication/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/authentication/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/authentication/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/authentication/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/authentication/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/home/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/home/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/home/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/home/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/home/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/home/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/settings/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/settings/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/settings/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/settings/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/settings/context_processors.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/settings/context_processors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/settings/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/settings/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/settings/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/settings/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/settings/migrations/0002_alter_customuser_permiss.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/settings/migrations/0002_alter_customuser_permiss.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/settings/migrations/0003_contacto.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/settings/migrations/0003_contacto.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/settings/migrations/0004_auto_20221216_2246.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/settings/migrations/0004_auto_20221216_2246.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/settings/migrations/0005_contacto_tipo_telefono.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/settings/migrations/0005_contacto_tipo_telefono.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/settings/migrations/0006_alter_contacto_tipo_telefono.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/settings/migrations/0006_alter_contacto_tipo_telefono.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/settings/migrations/0007_auto_20221217_1137.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/settings/migrations/0007_auto_20221217_1137.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/settings/migrations/0008_alter_contacto_tipo_telefono.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/settings/migrations/0008_alter_contacto_tipo_telefono.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/settings/migrations/0009_alter_contacto_correo_alter_contacto_tipo_telefono_and_more.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/settings/migrations/0009_alter_contacto_correo_alter_contacto_tipo_telefono_and_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/settings/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/settings/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/settings/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/settings/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/settings/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/settings/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/tiempo/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/tiempo/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/tiempo/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/tiempo/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/tiempo/code_descriptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/tiempo/code_descriptions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/tiempo/export_img.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/tiempo/export_img.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/tiempo/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/tiempo/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/tiempo/migrations/0002_remove_synop_var_iiiii_remove_synop_var_iiiii_code_and_more.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/tiempo/migrations/0002_remove_synop_var_iiiii_remove_synop_var_iiiii_code_and_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/tiempo/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/tiempo/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/tiempo/render_to_pdf.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/tiempo/render_to_pdf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/tiempo/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/tiempo/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/tiempo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/tiempo/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/asgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/wsgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gunicorn-cfg.py" beforeDir="false" afterPath="$PROJECT_DIR$/gunicorn-cfg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,80 +68,6 @@
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/apps/authentication/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="80" selection-start-line="14" selection-start-column="65" selection-end-line="14" selection-end-column="80" />
-              <folding>
-                <element signature="e#75#103#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/apps/settings/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="31" column="54" lean-forward="true" selection-start-line="31" selection-start-column="54" selection-end-line="31" selection-end-column="54" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/apps/authentication/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
-              <folding>
-                <element signature="e#102#137#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/apps/templates/settings/general-settings.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="101" column="26" lean-forward="true" selection-start-line="90" selection-start-column="19" selection-end-line="101" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/apps/templates/accounts/change_password.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="78" column="55" selection-start-line="78" selection-start-column="48" selection-end-line="78" selection-end-column="55" />
-              <folding>
-                <element signature="n#div#1;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/apps/templates/accounts/profile.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="230" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="230" />
-              <folding>
-                <element signature="n#div#0;n#!!top" />
-                <element signature="n#div#1;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -114,6 +83,9 @@
       <find>form</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -128,12 +100,16 @@
       </list>
     </option>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1346" />
     <option name="height" value="688" />
   </component>
+  <component name="ProjectId" id="2KvxbZ9vOq8JLVa5GU5znprOwyC" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -188,28 +164,20 @@
       <pane id="Scope" />
     </panes>
   </component>
-  <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/apps/templates/accounts" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/webfactory/Databank/Bussines/WebFactoryProjects/work/webfactory/Python_Tesis"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Mio\Proyectos\django-volt-dashboard-master\apps\templates\accounts" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="django-volt-dashboard-master" type="Python.DjangoServer" factoryName="Django server">
@@ -237,6 +205,7 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -250,6 +219,7 @@
       <workItem from="1654090770024" duration="234000" />
       <workItem from="1654091059147" duration="314000" />
       <workItem from="1654091866539" duration="6738000" />
+      <workItem from="1674868931037" duration="1873000" />
     </task>
     <servers />
   </component>
@@ -283,7 +253,7 @@
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$APPLICATION_CONFIG_DIR$/pycharm64.exe.vmoptions">

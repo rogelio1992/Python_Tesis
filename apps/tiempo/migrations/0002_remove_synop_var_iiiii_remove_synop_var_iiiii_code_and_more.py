@@ -6,21 +6,21 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('tiempo', '0001_initial'),
+        ("tiempo", "0001_initial"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='synop',
-            name='var_IIiii',
+            model_name="synop",
+            name="var_IIiii",
         ),
         migrations.RemoveField(
-            model_name='synop',
-            name='var_IIiii_code',
+            model_name="synop",
+            name="var_IIiii_code",
         ),
         migrations.AlterField(
-            model_name='estacion',
-            name='code',
-            field=models.CharField(max_length=50, unique=True, verbose_name='Código'),
+            model_name="estacion",
+            name="code",
+            field=models.CharField(max_length=50, unique=True, verbose_name="Código"),
         ),
     ]
