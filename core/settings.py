@@ -92,11 +92,11 @@ WSGI_APPLICATION = "core.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "meteorologia_db",
-        "USER": "postgres",
-        "PASSWORD": "admin",
-        "HOST": "127.0.0.1",
-        "PORT": "5433",
+        "NAME": config("POSTGRES_DB", default=""),
+        "USER": config("POSTGRES_USER", default=""),
+        "PASSWORD": config("POSTGRES_PASSWORD", default=""),
+        "HOST": config("POSTGRES_HOST", default="localhost"),
+        "PORT": config("POSTGRES_PORT", default="5432"),
     }
 }
 
